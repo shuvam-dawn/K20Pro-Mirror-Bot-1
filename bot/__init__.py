@@ -69,7 +69,6 @@ if os.path.exists('authorized_chats.txt'):
 try:
     BOT_TOKEN = getConfig('BOT_TOKEN')
     parent_id = getConfig('GDRIVE_FOLDER_ID')
-    pparent_id = getConfig('PGDRIVE_FOLDER_ID')
     telegraph_token = getConfig('TELEGRAPH_TOKEN')
     DOWNLOAD_DIR = getConfig('DOWNLOAD_DIR')
     if DOWNLOAD_DIR[-1] != '/' or DOWNLOAD_DIR[-1] != '\\':
@@ -104,12 +103,6 @@ try:
         INDEX_URL = None
 except KeyError:
     INDEX_URL = None
-try:
-    PINDEX_URL = getConfig('PINDEX_URL')
-    if len(PINDEX_URL) == 0:
-        PINDEX_URL = None
-except KeyError:
-    PINDEX_URL = None    
 try:
     IS_TEAM_DRIVE = getConfig('IS_TEAM_DRIVE')
     if IS_TEAM_DRIVE.lower() == 'true':
