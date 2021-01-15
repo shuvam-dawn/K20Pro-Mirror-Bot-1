@@ -92,17 +92,17 @@ def get_readable_message():
     with download_dict_lock:
         msg = "◣K20 Pro Mirror◢"
         for download in list(download_dict.values()):
-            msg += f"\n\n<b>Filename:</b> (<i>{download.name()}</i>)"
-            msg += f"\n\n<b>Status:</b> {download.status()}"
+            msg += f"\n\n➻<b>Filename:</b> (<i>{download.name()}</i>)"
+            msg += f"\n\n➻<b>Status:</b> {download.status()}"
             if download.status() != MirrorStatus.STATUS_ARCHIVING and download.status() != MirrorStatus.STATUS_EXTRACTING:
-                msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>" \
-                       f"\n\n<b>Size:</b> {download.size()}" \
-                       f"\n\n<b>Speed:</b> {download.speed()} \n\n<b>ETA:</b> {download.eta()} "
+                msg += f"\n<code>{get_progress_bar_string(download)} -{download.progress()}</code>" \
+                       f"\n\n➻<b>Size:</b> {download.size()}" \
+                       f"\n\n➻<b>Speed:</b> {download.speed()} \n\n➻<b>ETA:</b> {download.eta()} "
             if download.status() == MirrorStatus.STATUS_DOWNLOADING:
                 if hasattr(download, 'is_torrent'):
                     msg += f"\n\n| P: {download.aria_download().connections} " \
                            f"\n| S: {download.aria_download().num_seeders}"
-                msg += f"\n\nGID: <code>{download.gid()}</code>"
+                msg += f"\n\n➻GID: <code>{download.gid()}</code>"
             msg += "\n\n"
         return msg
 
