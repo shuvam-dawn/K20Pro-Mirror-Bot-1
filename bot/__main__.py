@@ -27,11 +27,11 @@ def stats(update, context):
     recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
-    stats = f'Bot Uptime: {currentTime}\n' \
-            f'Total disk space: {total}\n' \
+    stats = f'🕒Bot Uptime: {currentTime}\n' \
+            f'💽Total disk space: {total}\n' \
             f'Used: {used}\n' \
             f'Free: {free}\n' \
-            f'📊Data Usage📊\n<b>Upload:</b> {sent}\n' \
+            f'📊Data Usage\n<b>Upload:</b> {sent}\n' \
             f'<b>Down:</b> {recv}\n\n' \
             f'CPU: {cpuUsage}%\n' \
             f'RAM: {memory}%'
@@ -49,7 +49,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
 
 @run_async
 def restart(update, context):
-    restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
+    restart_message = sendMessage("Restarting the bot, Please wait !", context.bot, update)
     # Save restart message object in order to reply to it after restarting
     fs_utils.clean_all()
     with open('restart.pickle', 'wb') as status:
@@ -62,7 +62,7 @@ def ping(update, context):
     start_time = int(round(time.time() * 1000))
     reply = sendMessage("Starting Ping", context.bot, update)
     end_time = int(round(time.time() * 1000))
-    editMessage(f'{end_time - start_time} ms', reply)
+    editMessage(f'Ping- {end_time - start_time} ms', reply)
 
 
 @run_async
@@ -93,7 +93,7 @@ def bot_help(update, context):
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by owner of the bot)
+/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by @Dawn_India, the owner of the bot)
 
 /{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
 
@@ -107,7 +107,7 @@ def main():
     if path.exists('restart.pickle'):
         with open('restart.pickle', 'rb') as status:
             restart_message = pickle.load(status)
-        restart_message.edit_text("Restarted Successfully!")
+        restart_message.edit_text("Bot Restarted Successfully !")
         remove('restart.pickle')
 
     start_handler = CommandHandler(BotCommands.StartCommand, start,
@@ -128,7 +128,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling()
-    LOGGER.info("Bot Started!")
+    LOGGER.info("Bot Started !")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
 
