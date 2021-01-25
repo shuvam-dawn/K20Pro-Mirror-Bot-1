@@ -27,11 +27,11 @@ def stats(update, context):
     recv = get_readable_file_size(psutil.net_io_counters().bytes_recv)
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
-    stats = f'🕒Bot Uptime: {currentTime}\n' \
-            f'💽Total disk space: {total}\n' \
+    stats = f'Bot Uptime: {currentTime}\n' \
+            f'Total disk space: {total}\n' \
             f'Used: {used}\n' \
             f'Free: {free}\n' \
-            f'📊Data Usage\n<b>Upload:</b> {sent}\n' \
+            f'Data Usage\n<b>Upload:</b> {sent}\n' \
             f'<b>Down:</b> {recv}\n\n' \
             f'CPU: {cpuUsage}%\n' \
             f'RAM: {memory}%'
@@ -92,10 +92,6 @@ def bot_help(update, context):
 /{BotCommands.ListCommand} [search term]: Searches the search term in the Google drive, if found replies with the link
 
 /{BotCommands.StatsCommand}: Show Stats of the machine the bot is hosted on
-
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by @Dawn_India, the owner of the bot)
-
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
 
 '''
     sendMessage(help_string, context.bot, update)
