@@ -26,9 +26,9 @@ class AriaDownloadHelper(DownloadHelper):
         smsg, button = gdrive.drive_list(sname)
         if STOP_DUPLICATE_MIRROR:
             if smsg:
-                dl.getListener().onDownloadError(f'File is already available in drive. This download has been stopped.\n\n')
+                dl.getListener().onDownloadError(f'File is already available in drive.')
                 print(dl.getListener())
-                sendMarkup(" Here is your download link 👇👇", dl.getListener().bot, dl.getListener().update, button)
+                sendMarkup("\n\n👇 Here is your download link 👇", dl.getListener().bot, dl.getListener().update, button)
                 aria2.remove([download])
             return
         update_all_messages()
@@ -53,13 +53,13 @@ class AriaDownloadHelper(DownloadHelper):
     def __onDownloadPause(self, api, gid):
         LOGGER.info(f"onDownloadPause: {gid}")
         dl = getDownloadByGid(gid)
-        dl.getListener().onDownloadError('Download stopped by user!')
+        dl.getListener().onDownloadError('Download stopped by user !')
 
     @new_thread
     def __onDownloadStopped(self, api, gid):
         LOGGER.info(f"onDownloadStop: {gid}")
         dl = getDownloadByGid(gid)
-        if dl: dl.getListener().onDownloadError('Download stopped by user!')
+        if dl: dl.getListener().onDownloadError('Download stopped by user !')
 
     @new_thread
     def __onDownloadError(self, api, gid):
