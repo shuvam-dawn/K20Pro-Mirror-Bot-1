@@ -143,8 +143,6 @@ class MirrorListener(listeners.MirrorListeners):
                 if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
                     share_url += '/'
                 msg += f'\n\n◈ Download Link: <a href="{share_url}">Index⚡️</a>'
-                uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"\nHay {uname}, Your Task has been Completed ! Enjoy..."
             if self.tag is not None:
                 msg += f'\nHai: @{self.tag} your link is ready !\n\nJoin- @IndianRedmiK20Pro'
             try:
